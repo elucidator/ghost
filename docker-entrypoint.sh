@@ -1,6 +1,7 @@
 #!/bin/bash -x
 set -e
 
+# Does not work for coreos?
 # allow the container to be started with `--user`
 #if [[ "$*" == npm*start* ]] && [ "$(id -u)" = '0' ]; then
 #	chown -R user "$GHOST_CONTENT"
