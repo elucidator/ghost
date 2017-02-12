@@ -38,12 +38,12 @@ RUN buildDeps=' \
 	&& rm -rf /tmp/npm*
 
 ENV GHOST_CONTENT /var/lib/ghost
-RUN mkdir -p "$GHOST_CONTENT" \
-	&& chown -R user:user "$GHOST_CONTENT" \
-# Ghost expects "config.js" to be in $GHOST_SOURCE, but it's more useful for
-# image users to manage that as part of their $GHOST_CONTENT volume, so we
-# symlink.
-	&& ln -s "$GHOST_CONTENT/config.js" "$GHOST_SOURCE/config.js"
+#RUN mkdir -p "$GHOST_CONTENT"
+#RUN chown -R user:user "$GHOST_CONTENT"
+## Ghost expects "config.js" to be in $GHOST_SOURCE, but it's more useful for
+## image users to manage that as part of their $GHOST_CONTENT volume, so we
+## symlink.
+RUN ln -s "$GHOST_CONTENT/config.js" "$GHOST_SOURCE/config.js"
 VOLUME $GHOST_CONTENT
 
 COPY docker-entrypoint.sh /entrypoint.sh
